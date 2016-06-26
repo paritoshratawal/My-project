@@ -1,0 +1,47 @@
+<h2 class="sub-header">CREATE TEST CREATE SPA</h2>
+<form>
+  <div class="row">
+    <div class="col-md-5">
+      <label for="testname">TEST NAME</label>
+      <input type="text" class="form-control" id="testname" placeholder="NAME" ng-model="testname">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="mxmrks">MAX MARKS</label>
+      <input type="text" class="form-control" id="mxmrks" placeholder="MAX MARKS" ng-model="maxmarks">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <label for="passmrks">PASSING MARKS</label>
+      <input type="text" class="form-control" id="passmrks" placeholder="PASSING MARKS" ng-model="passingmarks">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="time">TOTAL TIME</label>
+      <input type="text" class="form-control" id="time" placeholder="TOTAL TIME" ng-model="totaltime">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <label>NEGATIVE MARKING</label><br>
+      <input type="radio" name="gender" value="yes"  ng-model="negmarking">yes<br>
+      <input type="radio" name="gender" value="no" ng-model="negmarking">no
+    </div>
+    <div class="col-md-5">
+      <label>ENTER COURSENAME</label>
+      <input type="text" class="form-control" ng-model="coursename">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-5">
+      <label>TEST TYPE</label><br>
+      <input type="radio" name="test" value="yes" ng-model="testype"><a href="test/MCQ.html">MCQ</a><br>
+      <input type="radio" name="test" value="no" ng-model="testype"><a href="test/TRUE%20AND%20FALSE.html">TRUE AND FALSE</a>
+    </div>
+  </div>
+  <br>
+  <div class="col-lg-offset-3">
+    <button type="submit" class="btn btn-primary" ng-click="testProperties()">Submit</button>
+  </div>
+</form>

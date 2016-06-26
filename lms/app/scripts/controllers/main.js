@@ -75,7 +75,7 @@ app.controller('regCtrl',function($scope,regFactory)
 
 /*************ASSIGNMENT UPLOAD CONTROLLER****************/
 
-app.controller('assignmentCtrl',function($scope,assignmentService)
+app.controller('assignmentCtrl',function($scope,assignmentFactory,uploadService)
 {
   $scope.uploadAssign=function()
   {
@@ -83,7 +83,8 @@ app.controller('assignmentCtrl',function($scope,assignmentService)
     var batchid = $scope.batchid;
     var subname=$scope.subjectname;
     var coursename=$scope.course;
-    var promise = assignmentService.assignment(assgname,batchid,subname,coursename);
+    var filename=$scope.file.name;
+    var promise = assignmentFactory.assignment(assgname,batchid,subname,coursename,file);
     console.log('promis in controller:',promise);
     promise.then(function (data) {
       console.log('data is',data);
@@ -96,6 +97,7 @@ app.controller('assignmentCtrl',function($scope,assignmentService)
     },function(err){
       alert('something happens',err);
     });
+    var upload=uploadService.post()
   }
 });
 

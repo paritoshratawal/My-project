@@ -64,16 +64,18 @@ app.factory('regFactory',function($http,$q){
   return{registerUser:registerUser};
 });
 
-/*upload assignment factory code*/
-app.factory('assignmentService',function($http,$q){
+/*assignment factory code*/
+app.factory('assignmentFactory',function($http,$q){
   //alert('in Assignment factory');
-  var assignment=function(assgname,batchid,subname,coursename){
+  //var assignment=function(assgname,batchid,subname,coursename,filename,file)
+  var assignment=function(assgname,batchid,subname,coursename,filename){
     var defered=$q.defer();
     var assignData={
       assigname:assgname,
       batchid:batchid,
       subname:subname,
-      course:coursename
+      course:coursename,
+      filename:filename,
     };
     console.log('data is :',assignData);
     $http.post('/assign',assignData).success(function(data)

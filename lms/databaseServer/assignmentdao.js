@@ -1,4 +1,4 @@
-function assgnData(assignmentname,batchid,subjectname,coursename,response)
+function assgnData(assignmentname,batchid,subjectname,coursename,filename,response)
 {
   console.log('In assignmentdao')
   var assginments=require('./assignmentdb');
@@ -6,7 +6,8 @@ function assgnData(assignmentname,batchid,subjectname,coursename,response)
     assignmentname:assignmentname,
     batchid:batchid,
     subjectname:subjectname,
-    coursename:coursename
+    coursename:coursename,
+    filename:filename
     /*coursename:coursename,
     filename:filename*/
   },function(err,success){

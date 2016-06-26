@@ -2,11 +2,20 @@
 
 var express=require("express");
 var bodyParser=require("body-Parser");
+var multer=require('multer');
 var app=express();
 app.use(express.static("app"));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-
+var storage=multer.diskStorage({
+  destination:function(req, file, cb){
+    cb(null,'/lms/uploads');
+  },
+  filename:function(req,file,cb){
+  cb(null,file.originalname);
+  }
+});
+var upload=multer({storage:storage}).any();
 
 app.post("/login",function(req,res)
 {
@@ -19,6 +28,7 @@ app.post("/login",function(req,res)
 
 
 /*************registration post server*******************/
+
 
 app.post("/reg",function(req,respns){
 console.log("In reg.post srever");
@@ -40,7 +50,7 @@ console.log("In reg.post srever");
   userData(fname,lname,uid,pwd,age,dob,gen,contact,email,address,zipcode,city,quaexp,teachsub,respns);
 });
 
-/*assignment post server code*/
+/****************assignment post server code**************/
 
 
 app.post("/assign",function(req,res)
@@ -50,8 +60,17 @@ app.post("/assign",function(req,res)
   var batchid=req.body.batchid;
   var subname=req.body.subname;
   var course=req.body.course;
+  var filename=req.body.filename;
   var assignmentUpload=require("./databaseServer/assignmentdao");
-  assignmentUpload(assigname,batchid,subname,course,res);
+  assignmentUpload(assigname,batchid,subname,course,filename,res);
+});
+
+/****************assignment post server code**************/
+
+app.post("/upload",upload,function(req,res)
+{console.log('in upload server function');
+  console.log(req.files);
+  res.send('success');
 });
 
 /**********test post server code*************/
